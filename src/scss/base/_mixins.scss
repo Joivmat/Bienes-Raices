@@ -19,7 +19,7 @@
     }
 }
 
-@mixin telefono {
+@mixin desktop1 {
     @media (min-width: v.$desktopxl) {
         @content;
     }
