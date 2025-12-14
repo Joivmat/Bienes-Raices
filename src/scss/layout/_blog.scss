@@ -1,7 +1,7 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-@include m.tablet {
+@include m.desktop {
     .seccion-inferior {
         display: grid;
         grid-template-columns: 2fr 1fr;
