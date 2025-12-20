@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 3rem;
+    align-items: center;
     @include m.tablet{
         flex-direction: row;
         justify-content: space-between;
@@ -12,9 +13,15 @@
 }
 
 .navegacion {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .3s ease-in-out, opacity 0.5s linear;
+
     @include m.tablet{
         display: flex;
         align-items: center;
+        visibility: visible;
+        opacity: 1;
     }
 
     a {
@@ -32,4 +39,22 @@
             }
         }
     }
+}
+
+// ** Menu de hamburguesa ** //
+
+.mobile-menu {
+    @include m.tablet {
+        display: none;
+    }
+
+    img {
+        width: 5rem;
+        cursor: pointer;
+    }
+}
+
+.mostrar {
+    visibility: visible;
+    opacity: 1;
 }
