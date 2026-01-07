@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-    
-    <header class="header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="logo">
-                </a>
+<?php 
 
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icono menu responsive">
-                </div>
+    require 'includes/funciones.php';
 
-                <nav class="navegacion">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                </nav>
-
-
-            </div> <!--.barra-->
-            
-            <h1>Venta de Casas y Departamentos</h1>
-        </div>
-    </header>
+    incluirTemplate('header', $inicio = true); 
+?>
 
     <main class="contenedor seccion">
         <h1>Mas Sobre Nosotros</h1>
@@ -86,7 +58,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
                 </div> <!--.contenido-anuncio-->
             </div> <!--.anuncio-->
 
@@ -117,7 +89,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
                 </div> <!--.contenido-anuncio-->
             </div> <!--.anuncio-->
 
@@ -148,20 +120,20 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
                 </div> <!--.contenido-anuncio-->
             </div> <!--.anuncio-->
         </div> <!--.contenedor-anuncios-->
 
         <div class="alinear-derecha">
-            <a class="boton-verde" href="anuncios.html">Ver Todas</a>
+            <a class="boton-verde" href="anuncios.php">Ver Todas</a>
         </div>
     </section>
 
     <section class="imagen-contacto">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario y un asesor se pondra en contacto contigo a la brevedad</p>
-        <a href="contacto.html" class="boton-amarillo">Contáctanos</a>
+        <a href="contacto.php" class="boton-amarillo">Contáctanos</a>
     </section>
 
     <div class="contenedor seccion seccion-inferior">
@@ -179,7 +151,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada1.html">
+                    <a href="entrada1.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="informacion-meta">Escrito el: <span>12/04/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -200,7 +172,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada2.html">
+                    <a href="entrada2.php">
                         <h4>Construye una alberca para tu hogar</h4>
                         <p class="informacion-meta">Escrito el: <span>16/04/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -223,17 +195,6 @@
 
     </div>
 
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="navegacion.html">Navegacion</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-    </footer>
-
-    <script src="build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    incluirTemplate('footer');
+?>
