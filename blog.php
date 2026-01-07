@@ -1,36 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-    
-    <header class="header">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="logo">
-                </a>
+<?php 
 
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icono menu responsive">
-                </div>
+    require 'includes/funciones.php';
 
-                <nav class="navegacion">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                </nav>
-
-
-            </div> <!--.barra-->
-            
-        </div>
-    </header>
+    incluirTemplate('header'); 
+?>
 
     <main class="contenedor seccion">
         <h1>Nuestro Blog</h1>
@@ -46,7 +19,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada1.html">
+                    <a href="entrada1.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="informacion-meta">Escrito el: <span>12/04/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -67,7 +40,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada2.html">
+                    <a href="entrada2.php">
                         <h4>Construye una alberca para tu hogar</h4>
                         <p class="informacion-meta">Escrito el: <span>16/04/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -88,7 +61,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada3.html">
+                    <a href="entrada3.php">
                         <h4>Guía para la decoracion de tu hogar</h4>
                         <p class="informacion-meta">Escrito el: <span>06/06/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -109,7 +82,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada4.html">
+                    <a href="entrada4.php">
                         <h4>Guía para la decoración de tu habitación</h4>
                         <p class="informacion-meta">Escrito el: <span>27/12/2026</span>por: <span>Admin</span></p>
                         <p>
@@ -120,17 +93,6 @@
             </article>
     </main>
 
-<footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-    </footer>
-
-    <script src="build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    incluirTemplate('footer');
+?>
