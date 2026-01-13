@@ -1,22 +1,37 @@
 <?php
+// Verificar id
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
+
+if(!$id){
+    header('Location: /admin');
+    exit;
+}
+
 // Base de Datos
 require '../../includes/config/database.php';
 $db = conectarDB();
 
-// Consulta Vendedores
+// Consulta Propiedad
+$consultaPropiedad = "SELECT * FROM propiedades WHERE id={$id}";
+$resultado = mysqli_query($db, $consultaPropiedad);
+$propiedad = mysqli_fetch_assoc($resultado);
 
+// Consulta Vendedores
 $consultaVendedores = 'SELECT * FROM vendedores';
 $resultado = mysqli_query($db,$consultaVendedores);
 
 // Inicializar variables
 $errores = [];
-$titulo = '';
-$precio = '';
-$descripcion = '';
-$habitaciones = '';
-$wc = '';
-$estacionamiento = '';
-$vendedor_id = '';
+
+$titulo = $propiedad['titulo'];
+$precio = $propiedad['precio'];
+$imagen = $propiedad['imagen'];
+$descripcion = $propiedad['descripcion'];
+$habitaciones = $propiedad['habitaciones'];
+$wc = $propiedad['wc'];
+$estacionamiento = $propiedad['estacionamiento'];
+$vendedor_id = $propiedad['vendedores_id'];
 
 // 
 
@@ -64,12 +79,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores['vendedor'] = 'Selecciona un vendedor';
     }
 
-    if(!$imagen || $imagen['error'] !== UPLOAD_ERR_OK){
-        $errores['imagen'] = 'La imagen es obligatoria';
-    } else {
-
     // Tamaño máximo 5mb
-    if($imagen['size'] > 5 * 1024 * 1024){
+    if($imagen['name']){
+        if($imagen['size'] > 5 * 1024 * 1024){
         $errores['imagen'] = 'La imagen no puede pesar más de 5MB';
     }
 
@@ -78,18 +90,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(!in_array($imagen['type'], $tiposPermitidos)){
         $errores['imagen'] = 'Solo se permiten imágenes JPG o PNG';
     }
-}
+    }
+    
+
 
     
     if(empty($errores)) {
 
-        
         $precio = (float) $precio;
         $habitaciones = (int) $habitaciones;
         $wc = (int) $wc;
         $estacionamiento = (int) $estacionamiento;
         $vendedor_id = (int) $vendedor_id;
-        $creado = date('Y-m-d');
 
         // Crear carpeta imagenes
         $carpetaImagenes = '../../imagenes/';
@@ -98,25 +110,45 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($carpetaImagenes, 0755, true);
         }
 
-        // Nombre unico
-        $nombreImagen = bin2hex(random_bytes(16)) . '.jpg' ;
+        $nombreImagen = "";
 
-        // Subir la imagen
-        move_uploaded_file($imagen['tmp_name'],$carpetaImagenes . $nombreImagen);
+        if($imagen['name']){
+            // Eliminar imagen existente
+            unlink($carpetaImagenes . $propiedad['imagen']);
+
+            // Nombre unico
+            $nombreImagen = bin2hex(random_bytes(16)) . '.jpg' ;
+
+            // Subir la imagen
+            move_uploaded_file($imagen['tmp_name'],$carpetaImagenes . $nombreImagen);
+        } else {
+            // Mantener imagen previa
+            $nombreImagen = $propiedad['imagen'];
+        }
+
+        
+
+        
 
         //Instruccion sql
 
         $stmt = $db->prepare("
-            INSERT INTO propiedades 
-            (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
-            VALUES 
-            (?,?,?,?,?,?,?,?,?)
+            UPDATE propiedades SET 
+                titulo = ?,
+                precio = ?,
+                imagen = ?,
+                descripcion = ?,
+                habitaciones = ?,
+                wc = ?,
+                estacionamiento = ?,
+                vendedores_id = ?
+            where id=?
         ");
 
         // Unir los parametros
 
         $stmt->bind_param(
-            "sdssiiisi",
+            "sdssiiiii",
             $titulo,
             $precio,
             $nombreImagen,
@@ -124,14 +156,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $habitaciones,
             $wc,
             $estacionamiento,
-            $creado,
-            $vendedor_id
+            $vendedor_id,
+            $id
         );
 
         // Ejecutar la instruccion 
 
         if($stmt->execute()){
-            header('Location: /admin?resultado=1');
+            header('Location: /admin?resultado=2');
             exit;
         } else {
             $errores[] = "Error al guardar la propiedad";
@@ -145,7 +177,7 @@ incluirTemplate('header');
 ?>
 
 <main class="contenedor seccion">
-    <h1>Crear Propiedad</h1>
+    <h1>Actualizar Propiedad</h1>
 
     <?php if(!empty($errores)): ?>
         <div class="alerta error">
@@ -188,6 +220,7 @@ incluirTemplate('header');
             <?php if (isset($errores['imagen'])):?>
                 <p class="error-text"><?php echo $errores['imagen']; ?></p>
             <?php endif; ?>
+            <img src="/imagenes/<?php echo $imagen;?>" alt="imagen propiedad" class="imagen-form">
 
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" name="descripcion"><?php echo htmlspecialchars($descripcion); ?></textarea>
@@ -245,10 +278,9 @@ incluirTemplate('header');
             <?php endif; ?>
         </fieldset>
 
-        <input type="submit" value="Crear propiedad" class="boton boton-verde">
+        <input type="submit" value="Actualizar propiedad" class="boton boton-verde">
 
     </form>
 </main>
 
 <?php incluirTemplate('footer'); ?>
-

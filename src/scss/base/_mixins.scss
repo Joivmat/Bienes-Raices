@@ -42,10 +42,30 @@
     display: $display;
     border: none;
 
+    transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+    box-shadow: 0 2px 6px rgba(v.$negro, 0.15);
+
 
     &:hover {
-        background-color: darken($color: $bgColor, $amount: 5%);
-        cursor: pointer;
-    }
+    background-color: darken($bgColor, 5%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(v.$negro, 0.2);
+    cursor: pointer;
+  }
 
-    }
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(v.$negro, 0.2);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba($bgColor, 0.35),
+      0 2px 6px rgba(v.$negro, 0.2);
+  }
+}

@@ -1,0 +1,135 @@
+@use 'variables' as v;
+
+.alerta {
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 1rem;
+    border-radius: .6rem;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: v.$bold;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &.exito {
+        background-color: v.$bgExito;
+        color: v.$verde;
+        border-left: 5px solid v.$borderExito;
+        box-shadow: 0 4px 10px rgba(v.$negro, 0.05);
+
+        &::before {
+            content: "✔";
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+    }
+
+    &.error {
+        background-color: v.$bgError;
+        color: v.$rojo;
+        border-left: 5px solid v.$borderError;
+        box-shadow: 0 4px 10px rgba(v.$negro, 0.05);
+
+        &::before {
+            content: "⚠";
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+    }
+}
+
+.formulario {
+    .error-text {
+        margin-top: 0.4rem;
+        font-size: 1.3rem;
+        color: v.$rojo;
+        font-weight: 500;
+        line-height: 1.3;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        &::before {
+            content: "•";
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+    }
+}
+
+table.propiedades {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  background-color: v.$blanco;
+
+  thead {
+    background-color: v.$gris;
+  }
+
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid v.$grisBorder;
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: v.$grisOscuro;
+  }
+
+  .imagen-tabla {
+    width: 20rem;
+    height: auto;
+    display: block;
+    border-radius: .6rem;
+    border: 1px solid v.$grisBorder;
+  }
+
+
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid v.$grisBorder;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  color: v.$grisOscuro;
+  background-color: v.$blanco;
+
+  &::file-selector-button {
+    margin-right: 1.5rem;
+    padding: 0.6rem 1.4rem;
+    border: 1px solid v.$grisBorder;
+    border-radius: 0.4rem;
+    background-color: v.$gris;
+    color: v.$grisOscuro;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  &::file-selector-button:hover {
+    background-color: v.$verde;
+    border-color: v.$verde;
+    color: v.$blanco;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$verde;
+  }
+}
+.imagen-form {
+    width: 35rem;
+    height: auto;
+    display: block;
+    border-radius: .6rem;
+    border: 1px solid v.$grisBorder;
+  }
