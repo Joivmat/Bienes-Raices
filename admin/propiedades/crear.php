@@ -141,7 +141,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Templates
 require '../../includes/funciones.php';
-incluirTemplate('header');
+incluirTemplate('header','Crear');
 ?>
 
 <main class="contenedor seccion">

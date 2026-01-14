@@ -1,8 +1,7 @@
 <?php 
 
     require 'includes/funciones.php';
-
-    incluirTemplate('header'); 
+    incluirTemplate('header','Blog-2'); 
 ?>
     <main class="contenedor seccion contenido-centrado">
         <h1>Construye una alberca para tu hogar</h1>

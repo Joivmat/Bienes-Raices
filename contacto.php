@@ -1,8 +1,7 @@
 <?php 
 
     require 'includes/funciones.php';
-
-    incluirTemplate('header'); 
+    incluirTemplate('header','Contacto'); 
 ?>
 
     <main class="contenedor seccion">

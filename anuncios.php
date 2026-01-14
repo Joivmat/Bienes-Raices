@@ -1,8 +1,6 @@
 <?php 
-
     require 'includes/funciones.php';
-
-    incluirTemplate('header'); 
+    incluirTemplate('header','Anuncios'); 
 ?>
 
     <main class="contenedor seccion">

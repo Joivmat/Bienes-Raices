@@ -9,7 +9,7 @@ if(!$id){
 }
 
 // Base de Datos
-
+require '../../includes/config/database.php';
 $db = conectarDB();
 
 // Consulta Propiedad
@@ -173,7 +173,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Templates
 require '../../includes/funciones.php';
-incluirTemplate('header');
+incluirTemplate('header','Actualizar');
 ?>
 
 <main class="contenedor seccion">

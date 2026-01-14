@@ -7,9 +7,9 @@
     $consulta = mysqli_query($db, $query);
 
     $resultado = $_GET['resultado'] ?? null;
-    
+
     require '../includes/funciones.php';
-    incluirTemplate('header'); 
+    incluirTemplate('header','Administrador'); 
 ?>
 
     <main class="contenedor seccion">

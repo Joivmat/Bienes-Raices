@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title><?php echo $titulo ?? 'Bienes Raíces'; ?> – Bienes Raíces</title>
+    <link rel="icon" type="image/png" href="../../src/img/favicon.png">
     <link rel="stylesheet" href="/build/css/app.css">
 </head>
 <body>
