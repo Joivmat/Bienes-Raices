@@ -9,7 +9,7 @@ if(!$id){
 }
 
 // Base de Datos
-require '../../includes/config/database.php';
+
 $db = conectarDB();
 
 // Consulta Propiedad
@@ -209,7 +209,7 @@ incluirTemplate('header');
                 step="0.01"
                 id="precio"
                 name="precio"
-                value="<?php echo htmlspecialchars($precio); ?>">
+                value="<?php echo (htmlspecialchars($precio)); ?>">
 
             <?php if(isset($errores['precio'])): ?>
                 <p class="error-text"><?php echo $errores['precio']; ?></p>
