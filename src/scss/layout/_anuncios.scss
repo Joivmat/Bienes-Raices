@@ -49,3 +49,19 @@
     }
         
 }
+
+.descripcion-anuncio{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.img-propiedad {
+
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+
+}

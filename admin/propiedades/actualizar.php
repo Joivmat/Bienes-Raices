@@ -1,7 +1,6 @@
 <?php
 // Verificar id
-$id = $_GET['id'];
-$id = filter_var($id, FILTER_VALIDATE_INT);
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if(!$id){
     header('Location: /admin');
