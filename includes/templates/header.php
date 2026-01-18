@@ -1,3 +1,8 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +26,14 @@
                 </div>
 
                 <nav class="navegacion">
-                    <a href="nosotros.php">Nosotros</a>
-                    <a href="anuncios.php">Anuncios</a>
-                    <a href="blog.php">Blog</a>
-                    <a href="contacto.php">Contacto</a>
+                    <a href="/nosotros.php">Nosotros</a>
+                    <a href="/anuncios.php">Anuncios</a>
+                    <a href="/blog.php">Blog</a>
+                    <a href="/contacto.php">Contacto</a>
+                    <?php if (isset($_SESSION['login']) && $_SESSION['login'] === true): ?>
+                         <a class="boton boton-rojo-block" href="/includes/config/logout.php">Cerrar sesión</a>
+                    <?php endif; ?>
+
                 </nav>
 
 

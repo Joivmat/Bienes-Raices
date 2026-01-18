@@ -3,3 +3,6 @@ build
 
 #modulos
 node_modules
+
+#usuarios
+usuario.php

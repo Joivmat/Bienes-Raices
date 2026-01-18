@@ -1,5 +1,6 @@
 <?php
-    require '../../includes/config/database.php';
+    require_once __DIR__ . '/../../includes/templates/auth.php';
+
 
     $db = conectarDB();
 
