@@ -8,5 +8,5 @@ node_modules
 usuario.php
 
 #db
-includes/config/database.php
+includes/config/database.local.php
 
