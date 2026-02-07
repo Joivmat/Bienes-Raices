@@ -60,3 +60,10 @@
     opacity: 1;
     height: auto;
 }
+
+.navegacion .boton {
+    margin-top: 0;
+    padding: 0.8rem 2rem; // iguala altura con los links
+    display: inline-flex;
+    align-items: center;
+}

@@ -3,3 +3,10 @@ build
 
 #modulos
 node_modules
+
+#usuarios
+usuario.php
+
+#db
+includes/config/database.local.php
+

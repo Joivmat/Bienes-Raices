@@ -1,8 +1,7 @@
 <?php 
 
     require 'includes/funciones.php';
-
-    incluirTemplate('header'); 
+    incluirTemplate('header','Blog-1');  
 ?>
     <main class="contenedor seccion contenido-centrado">
         <h1>Terraza en el techo de tu casa</h1>

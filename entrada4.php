@@ -1,8 +1,7 @@
 <?php 
 
     require 'includes/funciones.php';
-
-    incluirTemplate('header'); 
+    incluirTemplate('header','Blog-4');  
 ?>
     <main class="contenedor seccion contenido-centrado">
         <h1>Guía para la decoración de tu habitación</h1>

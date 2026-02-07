@@ -21,3 +21,22 @@
         width: auto;
     }
 }
+
+.boton-rojo-block{
+    @include m.boton(v.$rojo,block);
+    width: 100%;
+}
+
+.boton-azul-block {
+    @include m.boton(v.$azul,block);
+    width: 100%;
+}
+.boton-azul {
+    @include m.boton(v.$azul, block);
+    
+
+    @include m.tablet {
+        display: inline-block;
+        width: auto;
+    }
+}

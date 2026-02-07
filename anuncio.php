@@ -1,39 +1,57 @@
 <?php 
+    require 'includes/config/database.php';
 
-    require 'includes/funciones.php';
+    // Verificar id
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-    incluirTemplate('header'); 
+    if(!$id){
+        header('Location: /anuncios.php');
+        exit;
+    }
+    // Importar db
+    $db = conectarDB();
+
+    // Consulta
+    $stmt = $db->prepare("SELECT * FROM propiedades WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $propiedad = $resultado->fetch_assoc();
+
+    if (!$propiedad) {
+        header('Location: /anuncios.php');
+        exit;
+    }
+
+    require 'includes/funciones.php';   
+    incluirTemplate('header','Anuncio'); 
 ?>
 
     <main class="contenedor seccion contenido-centrado">
-        <h1>Casa en venta frente al bosque</h1>
+        <h1><?php echo htmlspecialchars($propiedad['titulo']); ?>
+</h1>
 
-        <picture>
-            <source srcset="build/img/destacada.webp" type="image/webp">
-            <source srcset="build/img/destacada.jpg" type="image/jpeg">
-                <img loading="lazy" src="build/img/destacada.jpg" alt="img de la propiedad">
-        </picture>
+            <img loading="lazy" src="/imagenes/<?php echo $propiedad['imagen'];?>" alt="img de la propiedad">
 
         <div class="resumen-propiedad" >
-            <p class="precio">$3,000,000</p>
+            <p class="precio">$ <?php echo number_format($propiedad['precio'],2,".", ",");?></p>
             <ul class="iconos-caracteristicas"> 
                 <li>
                     <img loading="lazy" src="build/img/icono_wc.svg"alt="icono wc">
-                    <p>3</p>
+                    <p><?php echo $propiedad['wc'];?></p>
                 </li>
                 <li>
                     <img loading="lazy" src="build/img/icono_estacionamiento.svg"alt="icono estacionamiento">
-                    <p>3</p>
+                    <p><?php echo $propiedad['estacionamiento'];?></p>
                 </li>
                 <li>
                     <img loading="lazy" src="build/img/icono_dormitorio.svg"alt="icono dormitorio">
-                    <p>4</p>
+                    <p><?php echo $propiedad['habitaciones'];?></p>
                 </li>
             </ul> 
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, maiores impedit in ipsa non optio quod quo pariatur sapiente suscipit eligendi aspernatur fuga. Repudiandae quo fugiat repellat odio maxime modi, explicabo consequatur odit voluptates reiciendis aspernatur recusandae beatae blanditiis! Sit impedit veniam corrupti dolore, alias voluptas non facere velit architecto vel totam dolores omnis atque illo saepe maiores fuga quo, laudantium laboriosam? Porro eligendi odit corporis, ex aspernatur obcaecati aliquid.
-            </p>
+            <p><?php echo nl2br(htmlspecialchars($propiedad['descripcion'])); ?>
+</p>
         </div>
     </main>
 
